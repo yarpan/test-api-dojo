@@ -1,0 +1,935 @@
+{
+	"info": {
+		"_postman_id": "d2b48d1a-c1eb-4bfd-9131-2673aaccbe44",
+		"name": "NASA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19884153"
+	},
+	"item": [
+		{
+			"name": "APOD: Astronomy Picture of the Day",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body copyright exists and not empty\", function () {\r",
+							"    pm.expect(jsonData.copyright).to.exist;\r",
+							"    pm.expect(jsonData.copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData.hdurl).to.exist;\r",
+							"    pm.expect(jsonData.hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData.media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData.service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: 2025-08-01",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body copyright exists and not empty\", function () {\r",
+							"    pm.expect(jsonData.copyright).to.exist;\r",
+							"    pm.expect(jsonData.copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData.hdurl).to.exist;\r",
+							"    pm.expect(jsonData.hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData.media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData.service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?date=2025-08-01",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-08-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: 2025-07-01 ... 2025-08-01",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body copyright exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].copyright).to.exist;\r",
+							"    pm.expect(jsonData[0].copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].hdurl).to.exist;\r",
+							"    pm.expect(jsonData[0].hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData[0].media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData[0].service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?start_date=2025-07-01&end_date=2025-08-01",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2025-07-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2025-08-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: 2025-07-01 ... 2025-07-02",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body copyright exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].copyright).to.exist;\r",
+							"    pm.expect(jsonData[0].copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].hdurl).to.exist;\r",
+							"    pm.expect(jsonData[0].hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData[0].media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData[0].service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?start_date=2025-07-01&end_date=2025-07-02",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2025-07-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2025-07-02"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: 2025-01-01 ... 2025-07-01",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body copyright exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].copyright).to.exist;\r",
+							"    pm.expect(jsonData[0].copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].hdurl).to.exist;\r",
+							"    pm.expect(jsonData[0].hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData[0].media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData[0].service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?start_date=2025-01-01&end_date=2025-07-01",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2025-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2025-07-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: count 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body explanation exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].explanation).to.exist;\r",
+							"    pm.expect(jsonData[0].explanation).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].hdurl).to.exist;\r",
+							"    pm.expect(jsonData[0].hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData[0].media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData[0].service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?count=3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: count 33",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body copyright exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].copyright).to.exist;\r",
+							"    pm.expect(jsonData[0].copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].hdurl).to.exist;\r",
+							"    pm.expect(jsonData[0].hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData[0].media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData[0].service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?count=33",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "33"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: count 100",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Transfer-Encoding is chunked\", function () {\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 18\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(18);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body title exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].copyright).to.exist;\r",
+							"    pm.expect(jsonData[0].copyright).not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"hdurl exists and not empty\", function () {\r",
+							"    pm.expect(jsonData[0].hdurl).to.exist;\r",
+							"    pm.expect(jsonData[0].hdurl).not.empty\r",
+							"});\r",
+							"\r",
+							"pm.test(\"media_type is image\", function () {\r",
+							"    pm.expect(jsonData[0].media_type).to.eql(\"image\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData[0].service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?count=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APOD: count 101 [negative]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Status test\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Headers tests\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Connection is keep-alive\", function () {\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Limit = 4000\", function () {\r",
+							"    pm.expect(Number(pm.response.headers.get(\"X-Ratelimit-Limit\"))).to.eql(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Ratelimit-Remaining < 4000\", function () {\r",
+							"    pm.expect(parseInt(pm.response.headers.get(\"X-Ratelimit-Remaining\"))).to.be.below(4000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in request > 5\", function () {\r",
+							"    pm.expect(pm.request.headers.count()).to.be.above(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Headers in response == 16\", function () {\r",
+							"    pm.expect(pm.response.headers.count()).to.eql(16);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Body tests\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Body code is 400\", function () {\r",
+							"    pm.expect(jsonData.code).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body msg is: 'Count must be positive and cannot exceed 100'\", function () {\r",
+							"    pm.expect(jsonData.msg).to.eql(\"Count must be positive and cannot exceed 100\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"service_version is v1\", function () {\r",
+							"    pm.expect(jsonData.service_version).to.eql(\"v1\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{apiKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/apod?count=101",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"apod"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "101"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://api.nasa.gov/planetary",
+			"type": "string"
+		},
+		{
+			"key": "apiKey",
+			"value": "JzaeM8dMrWZzUG3ZdpLQa2epUNbO13aSFosayUY4",
+			"type": "string"
+		}
+	]
+}

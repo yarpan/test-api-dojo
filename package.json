@@ -1,0 +1,20 @@
+{
+  "name": "qa-dojo-api",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run collections/jsonPlaceholder.postman_collection.json",
+    "test-httpbin": "newman run collections/httpbin.postman_collection.json -r htmlextra",
+    "test-nasa": "newman run collections/nasa.postman_collection.json -r htmlextra",
+    "test-nasa-show": "newman run collections/nasa.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/report.html && start report.html"
+
+  },
+  "dependencies": {
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}
