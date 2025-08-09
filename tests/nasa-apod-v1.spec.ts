@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+
 const baseUrl = 'https://api.nasa.gov/planetary/apod';
 const apiKey = 'JzaeM8dMrWZzUG3ZdpLQa2epUNbO13aSFosayUY4';
 
