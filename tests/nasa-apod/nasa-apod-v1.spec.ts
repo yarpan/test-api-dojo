@@ -7,7 +7,14 @@ const apiKey = 'JzaeM8dMrWZzUG3ZdpLQa2epUNbO13aSFosayUY4';
 
 test.describe('APOD: Astronomy Picture of the Day', () => {
 
-  test('Picture of the day', async ({ request }) => {
+  test('Picture of the day', 
+    {
+      tag: ['@api', '@smoke'],
+      annotation: { 
+        type: 'description', 
+        description: 'This test checks the picture of the day from NASA API' },
+    },
+      async ({ request }) => {
 
     const response = await request.get(`${baseUrl}?api_key=${apiKey}`);
     const json = await response.json();
@@ -35,7 +42,17 @@ test.describe('APOD: Astronomy Picture of the Day', () => {
 
   test('Picture of the day 2025-07-01...2025-08-01', async ({ request }) => {
 
-    const response = await request.get(`${baseUrl}?api_key=${apiKey}&start_date=2025-07-01&end_date=2025-08-01`);
+    const start_date = '2025-07-01';
+    const end_date = '2025-08-01';
+
+    const response = await request.get(`planetary/apod`, {
+      params: {
+        api_key: apiKey,
+        start_date: start_date,
+        end_date: end_date
+      }
+    });
+
     const json = await response.json();
 
     expect(response.status()).toBe(200);

@@ -35,12 +35,20 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { 
-        // ...devices['Desktop Chrome'] 
+      name: 'nasa-apod',
+      testDir: './tests/nasa-apod/',
+      use: {
+        baseURL: 'https://api.nasa.gov',
       },
     },
 
+    {
+      name: 'jsonplaceholder',
+      testDir: './tests/json-placeholder/',
+      use: {
+        baseURL: 'https://jsonplaceholder.typicode.com',
+      },
+    },
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
