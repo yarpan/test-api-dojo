@@ -7,7 +7,5 @@ node_modules/
 .idea/
 .DS_Store
 .DS-Store
-.auth
-.cursor/
 unstaged/
-newman/
+.env
