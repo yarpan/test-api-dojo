@@ -4,9 +4,10 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -14,7 +15,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -25,15 +26,23 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
 
-  /* Configure projects for major browsers */
+  /* Configure projects */
   projects: [
+
+    {
+      name: 'jsonplaceholder',
+      testDir: './tests/json-placeholder/',
+      use: {
+        baseURL: 'https://jsonplaceholder.typicode.com',
+      },
+    },
+
     {
       name: 'nasa-apod',
       testDir: './tests/nasa-apod/',
@@ -43,48 +52,20 @@ export default defineConfig({
     },
 
     {
-      name: 'jsonplaceholder',
-      testDir: './tests/json-placeholder/',
+      name: 'restful-booker',
+      testDir: './tests/restful-booker/',
       use: {
-        baseURL: 'https://jsonplaceholder.typicode.com',
+        baseURL: 'https://restful-booker.herokuapp.com',
       },
     },
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    {
+      name: 'spotify',
+      testDir: './tests/spotify/',
+      use: {
+        baseURL: 'https://api.spotify.com/v1',
+      },
+    },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 
 });

@@ -7,15 +7,17 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-
     "test": "npx playwright test nasa-apod-v2.spec.ts --reporter=html",
-    
     "report": "npx playwright show-report"
-
   },
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "joi": "^18.0.0",
+    "jsonwebtoken": "^9.0.2"
+  },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.2.0"
   }
 }

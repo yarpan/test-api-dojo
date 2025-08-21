@@ -4,7 +4,6 @@ import { getDateWithOffset } from '../../helpers/date-manager';
 const apiKey = 'JzaeM8dMrWZzUG3ZdpLQa2epUNbO13aSFosayUY4';
 
 
-
 test.describe('APOD: Tests with date ranges', () => {
 
   const testData = [
