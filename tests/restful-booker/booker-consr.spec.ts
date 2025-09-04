@@ -1,5 +1,5 @@
 import { APIResponse, expect } from "playwright/test";
-import { test } from "./booker.fixtures";
+import { test } from "./booker.fixture";
 
 const testData = [
   {
