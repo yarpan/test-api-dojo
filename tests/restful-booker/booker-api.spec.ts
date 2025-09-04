@@ -180,7 +180,7 @@ test("create booking, json schema should be valid", async ({ request }) => {
 });
 
 
-test("update existing booking", async ({ request }) => {
+test("update existing booking", async ({ request, token }) => {
     const result = await request.post("/booking", {
         data: {
             firstname: "Jim",
