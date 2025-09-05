@@ -74,7 +74,7 @@ export class BookingBuilder {
 
 
 const booking = new BookingBuilder()
-  .withFirstName("Pavlo")
+  .withFirstName("John")
   .withBookingDates({
     checkin: "2002",
     checkout: "2003",

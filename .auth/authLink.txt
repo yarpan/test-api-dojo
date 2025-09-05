@@ -1,0 +1,1 @@
+https://accounts.spotify.com/en/authorize?response_type=code&client_id=ca1a11a667e44a23aef028eeb1fe188e&scope=playlist-modify-public+user-library-modify+user-library-read+playlist-modify-private+playlist-read-private+user-read-private+user-read-email&redirect_uri=https://4adce9f14588.ngrok-free.app/callback&state=playlist-test

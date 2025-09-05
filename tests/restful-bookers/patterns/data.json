@@ -1,0 +1,100 @@
+
+{
+  "id": 12345,
+  "name": "Smartphone XYZ",
+  "isAvailable": true,
+  "price": 99900,
+  "priceFloat": 999.99,
+  "description": "High-quality smartphone with advanced features",
+  "manufacturer": null,
+  "warranty": {
+    "years": 2,
+    "type": "limited",
+    "coverage": ["hardware", "software", "battery"]
+  },
+  "createdAt": "2024-08-21T10:30:00.000Z",
+  "updatedAt": "2024-08-21T12:15:30.000Z",
+  "tags": ["electronics", "mobile", "smartphone", "5G", "premium"],
+  "reviews": [
+    {
+      "id": 1,
+      "rating": 5,
+      "comment": "Excellent product! Fast delivery and great quality",
+      "reviewer": "John Doe",
+      "reviewerEmail": "john.doe@example.com",
+      "date": "2024-01-15T14:20:00.000Z",
+      "verified": true,
+      "helpful": 45
+    },
+    {
+      "id": 2,
+      "rating": 4,
+      "comment": "Good value for money, battery could be better",
+      "reviewer": "Jane Smith",
+      "reviewerEmail": "jane.smith@example.com",
+      "date": "2024-02-20T09:45:00.000Z",
+      "verified": true,
+      "helpful": 32
+    },
+    {
+      "id": 3,
+      "rating": 5,
+      "comment": "Amazing camera quality and performance",
+      "reviewer": "Mike Johnson",
+      "reviewerEmail": "mike.johnson@example.com",
+      "date": "2024-03-10T16:30:00.000Z",
+      "verified": false,
+      "helpful": 18
+    }
+  ],
+  "specifications": {
+    "processor": "Snapdragon 8 Gen 2",
+    "memory": "8GB RAM",
+    "storage": "256GB",
+    "display": "6.7 inch OLED",
+    "camera": "50MP triple camera",
+    "battery": "4500mAh",
+    "os": "Android 14",
+    "connectivity": ["5G", "WiFi 6E", "Bluetooth 5.3", "NFC"]
+  },
+  "categories": ["electronics", "smartphones", "premium"],
+  "pricing": {
+    "original": 99900,
+    "current": 89900,
+    "discount": 10,
+    "currency": "USD",
+    "tax": 8.5
+  },
+  "inventory": {
+    "stock": 150,
+    "reserved": 25,
+    "available": 125,
+    "reorderLevel": 50,
+    "supplier": "TechCorp Ltd",
+    "nextDelivery": "2024-12-01T00:00:00.000Z"
+  },
+  "shipping": {
+    "weight": 0.18,
+    "dimensions": {
+      "length": 15.5,
+      "width": 7.5,
+      "height": 0.8
+    },
+    "freeShipping": true,
+    "estimatedDays": 2,
+    "shippingMethods": ["standard", "express", "overnight"]
+  },
+  "seo": {
+    "title": "Smartphone XYZ - Premium 5G Mobile Phone",
+    "description": "Experience the latest technology with our premium smartphone featuring advanced camera, long battery life, and 5G connectivity.",
+    "keywords": ["smartphone", "5G", "premium", "camera", "android"],
+    "slug": "smartphone-xyz-premium-5g"
+  },
+  "analytics": {
+    "views": 15420,
+    "purchases": 847,
+    "conversionRate": 5.5,
+    "averageRating": 4.7,
+    "totalReviews": 243
+  }
+}
