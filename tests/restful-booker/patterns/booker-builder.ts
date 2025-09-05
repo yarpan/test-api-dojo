@@ -36,7 +36,7 @@ export class BookingBuilder {
   }
 
   withUser(fullName: string) {
-    // логіка отримання юзер
+    // user retrieving logic
   }
 
   withLastName(lastName: string) {
@@ -79,7 +79,7 @@ const booking = new BookingBuilder()
     checkin: "2002",
     checkout: "2003",
   })
-  .withLastName("Safono")
+  .withLastName("Smith")
   .build();
 
 console.log(booking);
